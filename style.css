@@ -75,3 +75,40 @@ body {
 .category-btn:active {
     transform: scale(1);
 }
+
+.pot-list {
+  list-style: none;
+  padding: 0;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.pot-list li {
+  margin-bottom: 12px;
+}
+
+.pot-btn {
+  width: 100%;
+  padding: 15px;
+  background: #ffffff;
+  border: 2px solid #3182CE;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.pot-btn:hover {
+  background: #e7f2ff;
+}
+
+.pot-content {
+  display: none;
+  background: #f7fbff;
+  padding: 15px 20px;
+  border-left: 4px solid #3182CE;
+  border-radius: 0 0 8px 8px;
+  margin-top: 5px;
+}
