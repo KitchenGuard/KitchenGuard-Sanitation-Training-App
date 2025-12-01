@@ -16,10 +16,25 @@
     </header>
 
 <!--search bar-->
-    <section class="search-section">
-    <input type="text" id="searchInput" placeholder="Search...">
-    <button id="searchBtn">Search</button>
-    </section>
+  <section class="search-section">
+  <input type="text" id="searchInput" placeholder="Search...">
+  <button id="searchBtn">Search</button>
+</section>
+
+<script>
+document.getElementById("searchBtn").addEventListener("click", function () {
+    const query = document.getElementById("searchInput").value.toLowerCase().trim();
+
+    if (query.includes("pots")) {
+        window.location.href = "pots.html";
+    } else if (query.includes("dishes")) {
+        window.location.href = "dishes.html";
+    } else {
+        alert("No results found.");
+    }
+});
+</script>
+
 <!--buttons section-->
   <section class="buttons-section">
     <a href="pots.html" class="category-btn">Pots</a>
