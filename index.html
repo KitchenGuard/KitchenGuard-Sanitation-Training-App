@@ -9,39 +9,28 @@
 </head>
 <body>
 
-<!--logo-->
-    <head class="header">
-      <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/kitchen-logo%2Ccooking-logo%2Cchef-logo%2Crestauran-design-template-12139c5c980ccb713a839a63f6cd8141_screen.jpg?ts=1737495969" alt="logo" class="logo"
-      <h1 class="page-title">KitchenGuard</h1>
-    </header>
+<!-- Header / Logo -->
+<header class="header">
+    <div class="logo-container">
+        <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/kitchen-logo%2Ccooking-logo%2Cchef-logo%2Crestauran-design-template-12139c5c980ccb713a839a63f6cd8141_screen.jpg?ts=1737495969"
+             alt="logo" class="logo">
+        <h1 class="page-title">KitchenGuard</h1>
+    </div>
+</header>
 
-<!--search bar-->
-  <section class="search-section">
-  <input type="text" id="searchInput" placeholder="Search...">
-  <button id="searchBtn">Search</button>
+<!-- Search bar -->
+<section class="search-section">
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button id="searchBtn">Search</button>
 </section>
 
-<script>
-document.getElementById("searchBtn").addEventListener("click", function () {
-    const query = document.getElementById("searchInput").value.toLowerCase().trim();
-
-    if (query.includes("pots")) {
-        window.location.href = "pots.html";
-    } else if (query.includes("dishes")) {
-        window.location.href = "dishes.html";
-    } else {
-        alert("No results found.");
-    }
-});
-</script>
-
-<!--buttons section-->
-  <section class="buttons-section">
+<!-- Buttons -->
+<section class="buttons-section">
     <a href="pots.html" class="category-btn">Pots</a>
     <a href="dishes.html" class="category-btn">Dishes</a>
     <a href="sink.html" class="category-btn">Sink</a>
     <a href="appliances.html" class="category-btn">Appliances</a>
-  </section>
+</section>
 
 <script src="script.js"></script>
 </body>

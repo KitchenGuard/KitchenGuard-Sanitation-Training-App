@@ -1,19 +1,41 @@
-// Get all pot buttons
-const potButtons = document.querySelectorAll(".pot-btn");
+/* ===== Accordion Feature ===== */
+document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".pot-btn");
 
-potButtons.forEach(button => {
-  button.addEventListener("click", () => {
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const content = btn.nextElementSibling;
 
-    const content = button.nextElementSibling; // the corresponding .pot-content
+            // Close other open sections (optional)
+            document.querySelectorAll(".pot-content").forEach(section => {
+                if (section !== content) {
+                    section.classList.remove("open");
+                }
+            });
 
-    // Close other opened contents (optional)
-    document.querySelectorAll(".pot-content").forEach(section => {
-      if (section !== content) {
-        section.style.display = "none";
-      }
+            content.classList.toggle("open");
+        });
     });
-
-    // Toggle the clicked one
-    content.style.display = content.style.display === "block" ? "none" : "block";
-  });
 });
+
+/* ===== Search Feature (index.html only) ===== */
+if (document.getElementById("searchBtn")) {
+    const searchBtn = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+
+    searchBtn.addEventListener("click", () => {
+        const term = searchInput.value.toLowerCase();
+
+        if (!term) {
+            alert("Please type something to search.");
+            return;
+        }
+
+        // Simple keyword-based redirect
+        if (term.includes("pot")) window.location.href = "pots.html";
+        else if (term.includes("dish")) window.location.href = "dishes.html";
+        else if (term.includes("sink")) window.location.href = "sink.html";
+        else if (term.includes("appliance")) window.location.href = "appliances.html";
+        else alert("No matching category found.");
+    });
+}

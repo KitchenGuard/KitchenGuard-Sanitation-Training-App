@@ -1,110 +1,134 @@
-/* ===== General Page Styling ===== */
+/* ===== Global Layout ===== */
 body {
     margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f7f7f7;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-family: "Poppins", sans-serif;
+    background-color: #FFF9F3;
+    color: #5A4633;
 }
 
-/* ===== Search Section ===== */
-.search-section {
-    margin-top: 40px;
+/* ===== Header / Logo Centered ===== */
+.header {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
+    background-color: #F7EDE2;
+    border-bottom: 2px solid #E6D5C3;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+.logo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 2.2rem;
+    margin-top: 10px;
+    color: #6D4C41;
+}
+
+/* ===== Search Bar ===== */
+.search-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
     gap: 10px;
 }
 
 #searchInput {
-    width: 250px;
-    padding: 12px;
-    border: 2px solid #555;
-    border-radius: 6px;
-    font-size: 16px;
-}
-
-#searchInput:focus {
-    outline: none;
-    border-color: #2d7dd2;
-    box-shadow: 0 0 4px rgba(45, 125, 210, 0.6);
+    padding: 12px 15px;
+    width: 320px;
+    border: 2px solid #D7CCC8;
+    border-radius: 10px;
+    font-size: 1rem;
 }
 
 #searchBtn {
     padding: 12px 20px;
-    background: #2d7dd2;
+    background-color: #CEEAD6;
     border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    color: white;
+    border-radius: 10px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
-#searchBtn:hover {
-    background: #ce986c;
-}
-
-/* ===== Buttons Section ===== */
+/* ===== Buttons Centered + Bigger ===== */
 .buttons-section {
-    margin-top: 60px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    text-align: center;
+    padding: 10px 0 40px; /* reduced empty space */
 }
 
 .category-btn {
-    padding: 15px 35px;
-    background: #fff;
-    border: 2px solid #2d7dd2;
-    color: #2d7dd2;
-    font-size: 18px;
-    font-weight: bold;
+    display: inline-block;
+    margin: 15px;
+    padding: 18px 40px;    /* bigger buttons */
+    background-color: #E3F2FD;
+    color: #4E4E4E;
     text-decoration: none;
-    border-radius: 8px;
-    transition: 0.25s;
+    font-size: 1.3rem;    /* bigger text */
+    border-radius: 15px;
+    border: 2px solid #BBDEFB;
+    transition: 0.3s ease;
 }
 
 .category-btn:hover {
-    background: #2d7dd2;
-    color: white;
-    transform: scale(1.05);
+    background-color: #BBDEFB;
 }
 
-.category-btn:active {
-    transform: scale(1);
+/* ===== Accordion Styling (for pots.html, sink.html, etc.) ===== */
+
+.pot-list {
+    list-style: none;
+    padding: 0;
+    max-width: 850px;
+    margin: 20px auto;
 }
 
-
-/* ===== font sa logo ===== */
-
-.header {
-    margin-top: 25px;
-    text-align : center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.pot-btn {
+    width: 100%;
+    background-color: #FDE2E4;
+    border: 2px solid #F9C5D5;
+    padding: 15px;
+    text-align: left;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.logo {
-    width: 100px;
-    height: auto;
-    margin-bottom: 8px;
-    border-radius: 50%;
-    border: 3px solid #f8e5a8;
-    padding: 5px;
-    background: #ffffff;
-    box-shadow: 0 4px 8px rgba(45, 125 , 210 , 0.15);
-
+.pot-btn:hover {
+    background-color: #FACBD6;
 }
 
-.page-title {
-    font-size:32px;
-    font-weight: bold;
-    color:#f8d195;
-    letter-spacing: 1.5px;
-    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0, 1);
-    font-family: "Poppins", Arial, sans-serif;
+.pot-content {
+    max-height: 0;              /* <-- THIS hides it */
+    overflow: hidden;           /* <-- THIS prevents content from showing */
+    background-color: #FFF5F7;
+    border-left: 3px solid #F9C5D5;
+    border-radius: 0 0 12px 12px;
+    padding: 0 20px;            /* padding removed when closed */
+    transition: max-height 0.4s ease, padding 0.3s ease;
+}
 
+.pot-content.open {
+    padding: 15px 20px;         /* padding restored when open */
+    max-height: 500px;          /* enough space to expand */
+}
+
+.pot-content p,
+.pot-content ol {
+    margin: 10px 0;
+}
+
+.pot-content {
+    text-align: left !important;
 }
