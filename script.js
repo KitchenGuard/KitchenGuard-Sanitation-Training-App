@@ -19,9 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ===== Search Feature (index.html only) ===== */
-if (document.getElementById("searchBtn")) {
+document.addEventListener("DOMContentLoaded", () => {
+
     const searchBtn = document.getElementById("searchBtn");
     const searchInput = document.getElementById("searchInput");
+
+    if (!searchBtn || !searchInput) {
+        console.error("Search button or input not found.");
+        return;
+    }
 
     function matchKeyword(term, keywords) {
         return keywords.some(keyword => {
@@ -38,7 +44,6 @@ if (document.getElementById("searchBtn")) {
             return;
         }
 
-        // Expanded keywords (more flexible, includes partial words)
         const potsKeywords = [
             "pot", "pots", "stockpot", "stock pot",
             "saucepan", "sauce pan", "pan", "pans",
@@ -90,5 +95,4 @@ if (document.getElementById("searchBtn")) {
             alert("No matching category found.");
         }
     });
-}
-
+});
