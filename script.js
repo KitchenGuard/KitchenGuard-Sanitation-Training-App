@@ -31,11 +31,26 @@ if (document.getElementById("searchBtn")) {
             return;
         }
 
-        // Simple keyword-based redirect
-        if (term.includes("pot")) window.location.href = "pots.html";
-        else if (term.includes("dish")) window.location.href = "dishes.html";
-        else if (term.includes("sink")) window.location.href = "sink.html";
-        else if (term.includes("appliance")) window.location.href = "appliances.html";
-        else alert("No matching category found.");
+        const potsKeywords = ["pot", "stockpot", "saucepan", "pans", "kawali", "wok", "dutch oven", "casserole"];
+        const dishesKeywords = ["dish", "dishes", "plate", "bowls", "bowl", "utensils", "knives", "cups", "glasses", "chopping boards"];
+        const sinkKeywords = ["sink", "lavabo", "faucet", "drain", "strainer", "countertop edge", "rack"];
+        const applianceKeywords = ["appliance", "appliances", "toaster", "microwave", "oven", "blender", "rice cooker", "coffee maker", "electric kettle", "dishwasher", "refrigerator", "fridge", "ref"];
+
+        if (potsKeywords.some(k => term.includes(k))) {
+            window.location.href = "pots.html";
+        }
+        else if (dishesKeywords.some(k => term.includes(k))) {
+            window.location.href = "dishes.html";
+        }
+        else if (sinkKeywords.some(k => term.includes(k))) {
+            window.location.href = "sink.html";
+        }
+        else if (applianceKeywords.some(k => term.includes(k))) {
+            window.location.href = "appliances.html";
+        }
+        else {
+            alert("No matching category found.");
+        }
+
     });
 }
