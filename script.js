@@ -19,80 +19,91 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ===== Search Feature (index.html only) ===== */
-document.addEventListener("DOMContentLoaded", () => {
+class KitchenSearch {
+    constructor(searchInputId, searchBtnId) {
+        this.searchInput = document.getElementById(searchInputId);
+        this.searchBtn = document.getElementById(searchBtnId);
 
-    const searchBtn = document.getElementById("searchBtn");
-    const searchInput = document.getElementById("searchInput");
+        this.keywordMap = {
+            pots: [
+                "pot", "pots", "stockpot", "stock pot",
+                "saucepan", "sauce pan", "pan", "pans",
+                "kawali", "wok",
+                "dutch", "oven", "dutch oven",
+                "casserole",
+                "saute", "saute pan"
+            ],
+            dishes: [
+                "dish", "dishes", "plate", "plates",
+                "bowl", "bowls",
+                "utensil", "utensils",
+                "knife", "knives",
+                "cup", "cups",
+                "glass", "glasses",
+                "chopping board", "chopping boards"
+            ],
+            sink: [
+                "sink", "lavabo",
+                "faucet", "drain", "strainer",
+                "countertop", "countertop edge",
+                "rack"
+            ],
+            appliances: [
+                "appliance", "appliances",
+                "toaster", "microwave", "oven",
+                "blender", "rice cooker",
+                "coffee maker", "electric kettle",
+                "dishwasher",
+                "refrigerator", "fridge", "ref"
+            ]
+        };
 
-    if (!searchBtn || !searchInput) {
-        console.error("Search button or input not found.");
-        return;
+        this.pageMap = {
+            pots: "pots.html",
+            dishes: "dishes.html",
+            sink: "sink.html",
+            appliances: "appliances.html"
+        };
+
+        this.init();
     }
 
-    function matchKeyword(term, keywords) {
-        return keywords.some(keyword => {
-            const k = keyword.toLowerCase();
+    init() {
+        if (!this.searchInput || !this.searchBtn) {
+            console.error("Search input or button missing.");
+            return;
+        }
+
+        this.searchBtn.addEventListener("click", () => this.handleSearch());
+    }
+
+    matchKeyword(term, keywords) {
+        return keywords.some(k => {
+            k = k.toLowerCase();
             return k.includes(term) || term.includes(k);
         });
     }
 
-    searchBtn.addEventListener("click", () => {
-        const term = searchInput.value.trim().toLowerCase();
+    handleSearch() {
+        const term = this.searchInput.value.trim().toLowerCase();
 
         if (!term) {
             alert("Please type something to search.");
             return;
         }
 
-        const potsKeywords = [
-            "pot", "pots", "stockpot", "stock pot",
-            "saucepan", "sauce pan", "pan", "pans",
-            "kawali", "wok",
-            "dutch", "oven", "dutch oven",
-            "casserole",
-            "saute", "saute pan"
-        ];
+        for (let category in this.keywordMap) {
+            if (this.matchKeyword(term, this.keywordMap[category])) {
+                window.location.href = this.pageMap[category];
+                return;
+            }
+        }
 
-        const dishesKeywords = [
-            "dish", "dishes", "plate", "plates",
-            "bowl", "bowls",
-            "utensil", "utensils",
-            "knife", "knives",
-            "cup", "cups",
-            "glass", "glasses",
-            "chopping board", "chopping boards"
-        ];
+        alert("No matching category found.");
+    }
+}
 
-        const sinkKeywords = [
-            "sink", "lavabo",
-            "faucet", "drain", "strainer",
-            "countertop", "countertop edge",
-            "rack"
-        ];
-
-        const applianceKeywords = [
-            "appliance", "appliances",
-            "toaster", "microwave", "oven",
-            "blender", "rice cooker",
-            "coffee maker", "electric kettle",
-            "dishwasher",
-            "refrigerator", "fridge", "ref"
-        ];
-
-        if (matchKeyword(term, potsKeywords)) {
-            window.location.href = "pots.html";
-        }
-        else if (matchKeyword(term, dishesKeywords)) {
-            window.location.href = "dishes.html";
-        }
-        else if (matchKeyword(term, sinkKeywords)) {
-            window.location.href = "sink.html";
-        }
-        else if (matchKeyword(term, applianceKeywords)) {
-            window.location.href = "appliances.html";
-        }
-        else {
-            alert("No matching category found.");
-        }
-    });
+// Initialize
+document.addEventListener("DOMContentLoaded", () => {
+    new KitchenSearch("searchInput", "searchBtn");
 });
