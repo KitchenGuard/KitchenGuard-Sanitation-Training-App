@@ -62,27 +62,48 @@ body {
 }
 
 /* ===== Buttons Centered + Bigger ===== */
+/* ===== Buttons with Images ===== */
 .buttons-section {
     text-align: center;
-    padding: 10px 0 40px; /* reduced empty space */
+    padding: 10px 0 40px;
 }
 
 .category-btn {
-    display: inline-block;
+    display: inline-flex;          /* allows vertical stacking */
+    flex-direction: column;        /* image above text */
+    align-items: center;           
+    justify-content: center;
+    gap: 10px;                     /* space between image + label */
+
     margin: 15px;
-    padding: 18px 40px;    /* bigger buttons */
+    padding: 18px 25px;            /* reduced padding to fit image */
+
     background-color: #E3F2FD;
     color: #4E4E4E;
     text-decoration: none;
-    font-size: 1.3rem;    /* bigger text */
+
+    width: 140px;                  /* uniform button width */
+
     border-radius: 15px;
     border: 2px solid #BBDEFB;
     transition: 0.3s ease;
+
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .category-btn:hover {
     background-color: #BBDEFB;
 }
+
+/* ===== Button Images (uniform size) ===== */
+.category-btn img {
+    width: 80px;                   /* small, uniform */
+    height: 80px;
+    object-fit: cover;             /* keeps shape clean */
+    border-radius: 10px;           /* optional style */
+}
+
 
 /* ===== Accordion Styling (for pots.html, sink.html, etc.) ===== */
 
